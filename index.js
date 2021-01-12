@@ -1,13 +1,16 @@
 let btnLength = document.querySelectorAll(".drum").length;
 for (let i = 0; i < btnLength; i++) {
-  document.querySelectorAll(".drum")[i].addEventListener("click", handleClick)
+  document.querySelectorAll(".drum")[i].addEventListener("click", function() {
+    makeSound(this.innerHTML)
+  })
+  document.addEventListener("keypress", function(event) {
+    makeSound(event.key)
+  })
 }
 
 
-function handleClick() {
-
-
-  switch (this.innerHTML) {
+function makeSound(key) {
+  switch (key) {
     case 'w':
       let tom1 =  new Audio("sounds/tom-1.mp3")
       tom1.play();
@@ -45,9 +48,8 @@ function handleClick() {
       break;
 
     default: 
-    console.log(btnInnerHTML)
+    console.log("Invalid")
       break;
   }
-
 }
 
