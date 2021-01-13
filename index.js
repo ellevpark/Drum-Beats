@@ -2,9 +2,11 @@ let btnLength = document.querySelectorAll(".drum").length;
 for (let i = 0; i < btnLength; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
     makeSound(this.innerHTML)
+    animateBtn(this.innerHTML)
   })
   document.addEventListener("keypress", function(event) {
     makeSound(event.key)
+    animateBtn(event.key)
   })
 }
 
@@ -53,3 +55,11 @@ function makeSound(key) {
   }
 }
 
+function animateBtn(currentKey){
+  let activeBtn = document.querySelector("." + currentKey)
+  activeBtn.classList.add("pressed");
+  setTimeout(function() {
+    activeBtn.classList.remove("pressed")
+  }, 100) 
+
+}
